@@ -10,7 +10,6 @@ import Axios from 'axios';
 function Form() {
     const [cpf, setCpf] = useState('');
     const [nome, setNome] = useState('');
-    const [cargo, setCargo] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     
@@ -18,7 +17,7 @@ function Form() {
 
     const submitReview = () => {
       Axios.post("http://localhost:3001/api/insert", {
-        cpf: cpf, nome: nome, cargo: cargo, email: email, senha: senha,
+        cpf: cpf, nome: nome, email: email, senha: senha,
       }).then(() => {
         alert('Cadastro realizado com Sucesso!')
       });
@@ -47,15 +46,6 @@ function Form() {
             fullWidth
             value={nome}
             onChange={(event) => {setNome(event.target.value)}}
-          />
-          <TextField
-            id="cargo"
-            label="Cargo na Empresa"
-            variant="outlined"
-            margin="dense"
-            fullWidth
-            value={cargo}
-            onChange={(event) => {setCargo(event.target.value)}}
           />
           <TextField
             id="email"

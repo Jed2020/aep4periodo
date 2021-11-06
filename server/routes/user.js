@@ -16,4 +16,7 @@ router.post("/api/insert", userController.register());
 // Rota de login de usuário
 router.post("/api/select", userController.login());
 
+// Rota de calculo de poluição
+router.post("/api/calc", userController.calc());
+
 module.exports = router;

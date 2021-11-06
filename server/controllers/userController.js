@@ -14,15 +14,14 @@ class userController {
 
             const cpf = req.body.cpf
             const nome = req.body.nome
-            const cargo = req.body.cargo
             const email = req.body.email
             const senha = req.body.senha
             
             const sqlInsert =
-            "INSERT INTO tbcadastro (cpf, nome, cargo, email, senha) VALUES (?,?,?,?,?)";
+            "INSERT INTO tbcadastro (cpf, nome, email, senha) VALUES (?,?,?,?)";
             bcrypt.hash(senha, 10, (errBcrypt, hash) => {
                 if (errBcrypt) {return res.status(500).send ({error: bcrypt }) }    
-            db.query(sqlInsert, [cpf, nome, cargo, email, hash], (err, result) => {
+            db.query(sqlInsert, [cpf, nome, email, hash], (err, result) => {
                 console.log(result);
                 console.log(err);
                 if (err){
@@ -58,7 +57,30 @@ class userController {
                 })  
             });    
         };  
-    }; 
+    };
+    calc(){
+
+        return (req, res) => {
+
+            const data = req.body.data
+            const etanol = req.body.etanol
+            const gasolina = req.body.gasolina
+            const litros = req.body.litros
+            const consumo = req.body.consumo
+            const resultado = req.body.resultado
+
+            const sqlInsert =
+            "INSERT INTO tbcalculo (data, etanol, gasolina, litros, consumo, resultado) VALUES (?,?,?,?,?,?)";   
+            db.query(sqlInsert, [data, etanol, gasolina, litros, consumo, resultado], (err, result) => {
+                console.log(result);
+                console.log(err);
+                if (err){
+                    return res.status(500).send (err)
+                }
+                return res.status(201).send({msg: "Cadastro Realizado."})
+            });
+        };  
+    };  
 }
 
 module.exports = userController;
