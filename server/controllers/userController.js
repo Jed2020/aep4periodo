@@ -67,11 +67,11 @@ class userController {
             const gasolina = req.body.gasolina
             const litros = req.body.litros
             const consumo = req.body.consumo
-            const resultado = req.body.resultado
+            
 
             const sqlInsert =
-            "INSERT INTO tbcalculo (data, etanol, gasolina, litros, consumo, resultado) VALUES (?,?,?,?,?,?)";   
-            db.query(sqlInsert, [data, etanol, gasolina, litros, consumo, resultado], (err, result) => {
+            "INSERT INTO tbcalculo (data, etanol, gasolina, litros, consumo) VALUES (?,?,?,?,?)";   
+            db.query(sqlInsert, [data, etanol, gasolina, litros, consumo], (err, result) => {
                 console.log(result);
                 console.log(err);
                 if (err){

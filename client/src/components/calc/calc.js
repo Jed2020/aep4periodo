@@ -18,7 +18,6 @@ function Calc() {
     const [gasolina, setGasolina] = useState(true);
     const [litros, setLitros] = useState('');
     const [consumo, setConsumo] = useState('');
-    const [resultado, setResultado] = useState('');
 
     const result = (etanol, litros) => {
         if (etanol) {
@@ -26,12 +25,11 @@ function Calc() {
         } else {
             document.write("Ao usar Gasolina a poluição será:",indiceGasolina*litros);
         }
-    }
-    
+    }  
 
     const submitReview = () => {
       Axios.post("http://localhost:3001/api/calc", {
-        data: data, etanol: etanol, gasolina: gasolina, litros: litros, consumo: consumo, resultado : resultado
+        data: data, etanol: etanol, gasolina: gasolina, litros: litros, consumo: consumo,
       }).then((result));
     };
   
@@ -100,15 +98,9 @@ function Calc() {
           <Button onClick={submitReview} className="btn-form" variant="contained" color="primary">
             Calcular
           </Button>
-          <TextField
-            id="resultado"
-            label="Resultado"
-            variant="outlined"
-            margin="dense"
-            fullWidth
-            value={submitReview}
-            onChange={(event) => {setResultado(event.target.value)}}
-          />
+          <div>
+              <p>Resultado: {submitReview.result}</p>
+          </div>
         </form>  
       </div>
     );
