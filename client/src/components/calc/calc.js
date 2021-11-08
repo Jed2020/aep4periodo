@@ -9,28 +9,31 @@ import{
 import "../form.css";
 import Axios from 'axios';
 
-var indiceEtanol = 1.09;
-var indiceGasolina = 2.27;
-
 function Calc() {
     const [data, setData] = useState('');
     const [etanol, setEtanol] = useState(true);
     const [gasolina, setGasolina] = useState(true);
     const [litros, setLitros] = useState('');
     const [consumo, setConsumo] = useState('');
+    const [resultado, setResultado] = useState('');
 
-    const result = (etanol, litros) => {
-        if (etanol) {
-            document.write("Ao usar Etanol a poluição será:",indiceEtanol*litros);
-        } else {
-            document.write("Ao usar Gasolina a poluição será:",indiceGasolina*litros);
-        }
-    }  
+    const result = (resultado) => {
+      let data = resultado.data
+      setResultado(data.msg_resultado)
+    }
 
     const submitReview = () => {
+
+      if (!etanol && !gasolina) {
+        alert('Você precisa escolher ao menos um combustível!')
+        setResultado('')
+        return
+      }
+
       Axios.post("http://localhost:3001/api/calc", {
         data: data, etanol: etanol, gasolina: gasolina, litros: litros, consumo: consumo,
       }).then((result));
+      
     };
   
     return (
@@ -99,7 +102,7 @@ function Calc() {
             Calcular
           </Button>
           <div>
-              <p>Resultado: {submitReview.result}</p>
+              <p>Resultado: {resultado}</p>
           </div>
         </form>  
       </div>

@@ -62,12 +62,18 @@ class userController {
 
         return (req, res) => {
 
+            let indiceEtanol = 1.09;
+            let indiceGasolina = 2.27;
+
             const data = req.body.data
             const etanol = req.body.etanol
             const gasolina = req.body.gasolina
-            const litros = req.body.litros
-            const consumo = req.body.consumo
+            const litros = parseFloat(req.body.litros)
+            const consumo = req.body.consumo 
             
+            let result_etanol = etanol ? ' Ao utilizar Etanol o índice de poluição será de ' + (litros * indiceEtanol) + ' ' : ' '
+            let result_gasolina = gasolina ? ' Ao utilizar Gasolina o índice de poluição será de ' + (litros * indiceGasolina) + ' ' : ''
+            let resultado_final = result_etanol + result_gasolina
 
             const sqlInsert =
             "INSERT INTO tbcalculo (data, etanol, gasolina, litros, consumo) VALUES (?,?,?,?,?)";   
@@ -75,9 +81,15 @@ class userController {
                 console.log(result);
                 console.log(err);
                 if (err){
-                    return res.status(500).send (err)
+                    return res.status(500).send(err)
                 }
-                return res.status(201).send({msg: "Cadastro Realizado."})
+
+                let resultado = {
+                    msg: "Cadastro Realizado.",
+                    msg_resultado: resultado_final
+                }
+
+                return res.status(201).send(resultado)
             });
         };  
     };  
