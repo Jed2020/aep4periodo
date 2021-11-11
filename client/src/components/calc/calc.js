@@ -38,7 +38,7 @@ function Calc() {
   
     return (
       <div className="form">
-        <h1>Faça seu Calculo</h1>
+        <h1>Calculo Índice de Poluição</h1>
         <form onSubmit={(event) => {
           event.preventDefault();
         }}>
