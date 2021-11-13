@@ -19,8 +19,8 @@ function MyForm() {
     };
   
     return (
-      <div className="form">
-        <h1>Faça seu de Login</h1>
+      <div id="cadastro" className="cadastroLogin">
+        <h1 className="tituloP">Faça seu de Login</h1>
         <form onSubmit={(event) => {
           event.preventDefault();
         }}>

@@ -3,6 +3,8 @@ import { TextField, Button, Box } from "@material-ui/core";
 import { Field, Form, Formik } from "formik";
 import { object, string } from "yup";
 import Axios from 'axios';
+import "../form.css"
+
 
 const initalValues = {
   cpf: "",
@@ -16,8 +18,8 @@ const initalValues = {
 const FormRegister = () => {
   
   return (
-    <div className="form">
-      <h1>Faça seu de Cadastro</h1>
+    <div id="cadastro" className="cadastroLogin">
+      <h1 className="tituloP">Faça seu de Cadastro</h1>
       <Formik
         initialValues={initalValues}
         validationSchema={object({

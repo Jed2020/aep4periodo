@@ -4,7 +4,7 @@ import Typography from './typography.js';
 import ProductHeroLayout from './layuot.js';
 
 const backgroundImage =
-  'https://images.pexels.com/photos/4021600/pexels-photo-4021600.jpeg?cs=srgb&dl=pexels-karolina-grabowska-4021600.jpg&fm=jpg';
+  'https://tracan.com.br/wp-content/uploads/2020/04/Conhe%C3%A7a-a-colhedora-de-cana-que-%C3%A9-l%C3%ADder-de-mercado-1-1024x683.jpg';
 
 export default function ProductHero() {
   return (
@@ -30,14 +30,14 @@ export default function ProductHero() {
         variant="h5"
         sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
       >
-        Você sabia que o consumo de Gasolina polue o dobro?
+        Você sabia que o consumo de gasolina polue o dobro?
       </Typography>
       <Button
         color="secondary"
         variant="contained"
         size="large"
         component="a"
-        href="/cadastro"
+        href="#cadastro"
         sx={{ minWidth: 200 }}
       >
         Cadastre-se
