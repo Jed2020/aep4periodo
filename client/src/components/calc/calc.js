@@ -6,7 +6,7 @@ import{
   FormControlLabel,
 } from "@material-ui/core";
 
-import "../form.css";
+import "../form-calc.css";
 import Axios from 'axios';
 
 function Calc() {
@@ -14,7 +14,6 @@ function Calc() {
     const [etanol, setEtanol] = useState(true);
     const [gasolina, setGasolina] = useState(true);
     const [litros, setLitros] = useState('');
-    const [consumo, setConsumo] = useState('');
     const [resultado, setResultado] = useState('');
 
     const result = (resultado) => {
@@ -31,13 +30,13 @@ function Calc() {
       }
 
       Axios.post("http://localhost:3001/api/calc", {
-        data: data, etanol: etanol, gasolina: gasolina, litros: litros, consumo: consumo,
+        data: data, etanol: etanol, gasolina: gasolina, litros: litros,
       }).then((result));
       
     };
   
     return (
-      <div className="form">
+      <div className="form-calc">
         <h1>Calculo Índice de Poluição</h1>
         <form onSubmit={(event) => {
           event.preventDefault();
@@ -89,20 +88,11 @@ function Calc() {
             onChange={(event) => {setLitros(event.target.value)}
             }
           />
-          <TextField
-            id="consumo"
-            label="Km por Litro"
-            variant="outlined"
-            margin="dense"
-            fullWidth
-            value={consumo}
-            onChange={(event) => {setConsumo(event.target.value)}}
-          />
           <Button onClick={submitReview} className="btn-form" variant="contained" color="primary">
             Calcular
           </Button>
           <div>
-              <p>Resultado: {resultado}</p>
+              <p><h2>Resultado: {resultado}</h2></p>
           </div>
         </form>  
       </div>

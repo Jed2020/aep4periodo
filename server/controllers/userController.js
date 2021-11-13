@@ -68,16 +68,15 @@ class userController {
             const data = req.body.data
             const etanol = req.body.etanol
             const gasolina = req.body.gasolina
-            const litros = parseFloat(req.body.litros)
-            const consumo = req.body.consumo 
+            const litros = parseFloat(req.body.litros) 
             
             let result_etanol = etanol ? ' Ao utilizar Etanol o índice de poluição será de ' + (litros * indiceEtanol) + ' ' : ' '
             let result_gasolina = gasolina ? ' Ao utilizar Gasolina o índice de poluição será de ' + (litros * indiceGasolina) + ' ' : ''
             let resultado_final = result_etanol + result_gasolina
 
             const sqlInsert =
-            "INSERT INTO tbcalculo (data, etanol, gasolina, litros, consumo) VALUES (?,?,?,?,?)";   
-            db.query(sqlInsert, [data, etanol, gasolina, litros, consumo], (err, result) => {
+            "INSERT INTO tbcalculo (data, etanol, gasolina, litros) VALUES (?,?,?,?)";   
+            db.query(sqlInsert, [data, etanol, gasolina, litros], (err, result) => {
                 console.log(result);
                 console.log(err);
                 if (err){
