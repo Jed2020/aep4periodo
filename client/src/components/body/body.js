@@ -4,7 +4,7 @@ import Typography from './typography.js';
 import ProductHeroLayout from './layuot.js';
 
 const backgroundImage =
-  'https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80';
+  'https://images.pexels.com/photos/4021600/pexels-photo-4021600.jpeg?cs=srgb&dl=pexels-karolina-grabowska-4021600.jpg&fm=jpg';
 
 export default function ProductHero() {
   return (
