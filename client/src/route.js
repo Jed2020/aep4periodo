@@ -4,10 +4,11 @@ import Main from "./pages/main";
 import Calc from "./pages/calc";
 
 
+
 function Routes() {  
   return (
     <Router>
-      <Switch>
+     <Switch>     
       <Route component={Main} exact path="/">
       </Route>
       <Route component={Calc} exact path="/calc">
