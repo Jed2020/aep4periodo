@@ -69,10 +69,21 @@ class userController {
             const etanol = req.body.etanol
             const gasolina = req.body.gasolina
             const litros = parseFloat(req.body.litros)
-            const indice = req.body.indice
+            var indice = 0
             
-            let result_etanol = etanol ? ' Ao utilizar Etanol o índice de poluição será de ' + (litros * indiceEtanol) + ' ' : ' '
-            let result_gasolina = gasolina ? ' Ao utilizar Gasolina o índice de poluição será de ' + (litros * indiceGasolina) + ' ' : ''
+            let calc_Etanol = etanol ? (litros * indiceEtanol) : ' '
+            let calc_Gas = gasolina ? (litros * indiceGasolina) : ' '
+
+            if (etanol) {
+                indice = calc_Etanol
+            } else {
+                indice = calc_Gas
+            }
+
+            let result_etanol = etanol ? ' Ao utilizar Etanol o índice de poluição será de ' + (calc_Etanol) + ' ' : ' '
+            let result_gasolina = gasolina ? ' Ao utilizar Gasolina o índice de poluição será de ' + (calc_Gas) + ' ' : ' '
+            
+
             let resultado_final = result_etanol + result_gasolina
 
             const sqlInsert =
@@ -88,7 +99,7 @@ class userController {
                     msg: "Cadastro Realizado.",
                     msg_resultado: resultado_final
                 }
-
+                
                 return res.status(201).send(resultado)
             });
         };  
@@ -97,12 +108,12 @@ class userController {
 
         return (req, res) => {
 
-            const id_calculo = req.body.id_calculo
-            const data = req.body.data
-            const etanol = req.body.etanol
-            const gasolina = req.body.gasolina
-            const litros = parseFloat(req.body.litros) 
-            const indice = req.body.indice
+            var id_calculo = 0
+            var data = 0
+            var etanol = 0
+            var gasolina = 0
+            var litros = 0 
+            var indice = 0
             
 
             const sqlSelect =
@@ -113,7 +124,7 @@ class userController {
                 if (err){
                     return res.status(500).send(err)
                 }
-                return res.status(201).send(resultado)
+                return res.status(201).send(result)
             });
         };  
     };    
