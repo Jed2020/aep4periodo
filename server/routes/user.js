@@ -20,6 +20,6 @@ router.post("/api/select", userController.login());
 router.post("/api/calc", userController.calc());
 
 // Rota de tabela de calculo 
-router.post("/api/table", userController.table());
+router.get("/api/table", userController.table());
 
 module.exports = router;

@@ -108,7 +108,7 @@ class userController {
 
         return (req, res) => {
 
-            var id_calculo = 0
+            var id = 0
             var data = 0
             var etanol = 0
             var gasolina = 0
@@ -117,8 +117,8 @@ class userController {
             
 
             const sqlSelect =
-            "SELECT id_calculo, data, etanol, gasolina, litros, indice FROM tbcalculo";   
-            db.query(sqlSelect, [id_calculo, data, etanol, gasolina, litros, indice], (err, result) => {
+            "SELECT id, data, etanol, gasolina, litros, indice FROM tbcalculo";   
+            db.query(sqlSelect, [id, data, etanol, gasolina, litros, indice], (err, result) => {
                 console.log(result);
                 console.log(err);
                 if (err){

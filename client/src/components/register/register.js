@@ -30,7 +30,9 @@ const FormRegister = () => {
           senha: string().required("Por favot digite a senha").min(6, "Senha de no mínimo 6 caracteres"),
         })}
         onSubmit={(values, formikHelpers) => {
-          Axios.post("http://localhost:3001/api/insert", values)
+          Axios.post("http://localhost:3001/api/insert", values).then(function(response) {
+            console.log(response)
+          });
           console.log(values);
           formikHelpers.resetForm();
         }}

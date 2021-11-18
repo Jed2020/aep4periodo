@@ -1,36 +1,28 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import Axios from 'axios';
 
-
-
 export default function DataTable() {
-    const columns = [
-        { field: 'id', headerName: 'ID', width: 150 },
-        { field: 'data', headerName: 'Data', width: 150 },
-        { field: 'etanol', headerName: 'Etanol', width: 150 },
-        { field: 'gasolina', headerName: 'Gasolina', width: 200 },
-        {field: 'litros', headerName: 'Litros', type: 'number', width: 150},
-        {field: 'indice', headerName: 'Indice', type: 'number', width: 150},
-      ];
-      
-      var id_calculo = 0
-      var data = 0
-      var etanol = 0
-      var gasolina = 0
-      var litros = 0 
-      var indice = 0
-      
-      Axios.post("http://localhost:3001/api/table", {
-        id_calculo: id_calculo, data: data, etanol: etanol, gasolina: gasolina, litros: litros, indice: indice,
-      }).then();
+  const [rows, setRows] = useState([]);
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 150 },
+    { field: 'data', headerName: 'Data', width: 200 },
+    { field: 'etanol', headerName: 'Etanol', width: 150 },
+    { field: 'gasolina', headerName: 'Gasolina', width: 150 },
+    { field: 'litros', headerName: 'Litros', type: 'number', width: 150},
+    { field: 'indice', headerName: 'Indice', type: 'number', width: 150},
+  ];
 
-      const rows = [
-        {id: id_calculo, data: data, etanol: etanol, gasolina: gasolina, litros:litros,  indice: indice},        
-      ];  
+  useEffect(() => {
+    Axios.get("http://localhost:3001/api/table").then(function(response) {
+      response.data.forEach(element => {
+        element.data = new Date(element.data)
+      });
 
-      console.log(rows);
-    
+      setRows(response.data);
+    });
+  }, []);
+
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
