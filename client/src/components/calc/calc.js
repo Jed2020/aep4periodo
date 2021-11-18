@@ -24,6 +24,8 @@ function Calc() {
 
     const submitReview = () => {
 
+      const cpf = localStorage.getItem("cpf") 
+
       if (!etanol && !gasolina) {
         alert('Você precisa escolher ao menos um combustível!')
         setIndice('')
@@ -31,9 +33,9 @@ function Calc() {
       }
 
       Axios.post("http://localhost:3001/api/calc", {
-        data: data, etanol: etanol, gasolina: gasolina, litros: litros, indice: submitReview,
-      }).then((result));
-      
+        data: data, etanol: etanol, gasolina: gasolina, litros: litros, indice: submitReview, id_cpf: cpf
+      }).then((result))
+        alert('Cadastro realizado com Sucesso!')   
     };
   
     return (

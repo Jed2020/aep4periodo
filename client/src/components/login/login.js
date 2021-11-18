@@ -16,7 +16,10 @@ function MyForm() {
     const submitReview = () => {
       Axios.post("http://localhost:3001/api/select", {
         cpf: cpf, senha: senha,
-      }).then(() => {
+      }).then((response) => {
+        localStorage.setItem("cpf", cpf);       
+        localStorage.setItem("token", response.data.token); 
+        Axios.defaults.headers.Authorization = "Bearer " + response.data.token;
         history.push('/calc');
         alert('Inserido com Sucesso!')
       });

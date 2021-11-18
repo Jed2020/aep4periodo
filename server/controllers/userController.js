@@ -70,6 +70,7 @@ class userController {
             const gasolina = req.body.gasolina
             const litros = parseFloat(req.body.litros)
             var indice = 0
+            const id_cpf = req.body.id_cpf 
             
             let calc_Etanol = etanol ? (litros * indiceEtanol) : ' '
             let calc_Gas = gasolina ? (litros * indiceGasolina) : ' '
@@ -87,8 +88,8 @@ class userController {
             let resultado_final = result_etanol + result_gasolina
 
             const sqlInsert =
-            "INSERT INTO tbcalculo (data, etanol, gasolina, litros, indice) VALUES (?,?,?,?,?)";   
-            db.query(sqlInsert, [data, etanol, gasolina, litros, indice], (err, result) => {
+            "INSERT INTO tbcalculo (data, etanol, gasolina, litros, indice, id_cpf) VALUES (?,?,?,?,?,?)";   
+            db.query(sqlInsert, [data, etanol, gasolina, litros, indice, id_cpf], (err, result) => {
                 console.log(result);
                 console.log(err);
                 if (err){
