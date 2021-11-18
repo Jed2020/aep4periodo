@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import Axios from 'axios';
+import Typography from '../body/typography';
 
 export default function DataTable() {
   const [rows, setRows] = useState([]);
@@ -25,10 +26,18 @@ export default function DataTable() {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
+      <Typography 
+        color="inherit"
+        align="center"
+        variant="h5"
+        sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
+      >
+        Relatório de Calculo de Índice de Poluição
+      </Typography>
       <DataGrid
         rows={rows}
         columns={columns}
-        pageSize={5}
+        pageSize={5} 
         rowsPerPageOptions={[5]}
         checkboxSelection
       />

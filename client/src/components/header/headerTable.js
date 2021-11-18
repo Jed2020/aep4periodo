@@ -40,9 +40,9 @@ function AppAppBar() {
               underline="none"
               sx={{ ...rightLink}}
               path="/table"
-              component={RouterLink} to="/table"
+              component={RouterLink} to="/calc"
             >
-            {'Relatório de Calculo'}
+            {'Calculo de Índice'}
             </Link>
           </Box>
         </Toolbar>

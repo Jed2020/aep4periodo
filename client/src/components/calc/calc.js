@@ -5,6 +5,7 @@ import{
     Checkbox,
   FormControlLabel,
 } from "@material-ui/core";
+import Typography from '../body/typography';
 
 import "../form-calc.css";
 import Axios from 'axios';
@@ -36,8 +37,15 @@ function Calc() {
     };
   
     return (
-      <div className="form-calc">
-        <h1>Calculo Índice de Poluição</h1>
+      <div id="calculo"className="form-calc">
+      <Typography 
+        color="inherit"
+        align="center"
+        variant="h5"
+        sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
+      >
+        Calculo Índice de Poluição
+      </Typography>
         <form onSubmit={(event) => {
           event.preventDefault();
         }}>
@@ -92,7 +100,14 @@ function Calc() {
             Calcular
           </Button>
           <div>
-              <h2>Resultado: {indice}</h2>
+           <Typography 
+            color="inherit"
+            align="center"
+            variant="h5"
+            sx={{ mb: 4, mt: { sx: 4, sm: 10 } }}
+           >
+            Resultado: {indice}
+           </Typography>
           </div>
         </form>  
       </div>

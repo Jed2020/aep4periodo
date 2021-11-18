@@ -6,9 +6,7 @@ import MuiTypography from '@mui/material/Typography';
 const markStyleMapping = {
   center: {
     h1: '',
-    h2: 'markedH2Center',
     h3: 'markedH3Center',
-    h4: 'markedH4Center',
     h5: '',
     h6: '',
   },
